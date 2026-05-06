@@ -322,10 +322,16 @@ if st.button("🚀 Predict Attrition", use_container_width=True):
         df.drop('TrainingTimesLastYear', axis=1, inplace=True)
 
         # Make prediction
-        prediction = model.predict(df)
+        prediction = int(model.predict(df)[0])
 
         st.markdown("---")
         if prediction == 0:
             st.success("✅ Employee Might NOT Leave The Job", icon="✅")
         else:
             st.error("⚠️ Employee Might LEAVE The Job", icon="⚠️")
+
+
+if __name__ == "__main__":
+    # Streamlit Cloud runs this file via `streamlit run app.py`.
+    # Keep this block side-effect free to avoid starting other servers.
+    pass
