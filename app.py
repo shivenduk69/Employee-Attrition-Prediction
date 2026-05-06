@@ -172,43 +172,43 @@ if st.button("🚀 Predict Attrition", use_container_width=True):
             df['EducationField_Medical'] = 0
             df['EducationField_Marketing'] = 0
             df['EducationField_Technical_Degree'] = 0
-            df['Education_Human_Resources'] = 0
-            df['Education_Other'] = 0
+            df['EducationField_Human_Resources'] = 0
+            df['EducationField_Other'] = 0
         elif education_field == 'Medical':
             df['EducationField_Life_Sciences'] = 0
             df['EducationField_Medical'] = 1
             df['EducationField_Marketing'] = 0
             df['EducationField_Technical_Degree'] = 0
-            df['Education_Human_Resources'] = 0
-            df['Education_Other'] = 0
+            df['EducationField_Human_Resources'] = 0
+            df['EducationField_Other'] = 0
         elif education_field == 'Marketing':
             df['EducationField_Life_Sciences'] = 0
             df['EducationField_Medical'] = 0
             df['EducationField_Marketing'] = 1
             df['EducationField_Technical_Degree'] = 0
-            df['Education_Human_Resources'] = 0
-            df['Education_Other'] = 0
+            df['EducationField_Human_Resources'] = 0
+            df['EducationField_Other'] = 0
         elif education_field == 'Technical Degree':
             df['EducationField_Life_Sciences'] = 0
             df['EducationField_Medical'] = 0
             df['EducationField_Marketing'] = 0
             df['EducationField_Technical_Degree'] = 1
-            df['Education_Human_Resources'] = 0
-            df['Education_Other'] = 0
+            df['EducationField_Human_Resources'] = 0
+            df['EducationField_Other'] = 0
         elif education_field == 'Human Resources':
             df['EducationField_Life_Sciences'] = 0
             df['EducationField_Medical'] = 0
             df['EducationField_Marketing'] = 0
             df['EducationField_Technical_Degree'] = 0
-            df['Education_Human_Resources'] = 1
-            df['Education_Other'] = 0
+            df['EducationField_Human_Resources'] = 1
+            df['EducationField_Other'] = 0
         else:
             df['EducationField_Life_Sciences'] = 0
             df['EducationField_Medical'] = 0
             df['EducationField_Marketing'] = 0
             df['EducationField_Technical_Degree'] = 0
-            df['Education_Human_Resources'] = 1
-            df['Education_Other'] = 1
+            df['EducationField_Human_Resources'] = 0
+            df['EducationField_Other'] = 1
         df.drop('EducationField', axis=1, inplace=True)
 
         if gender == 'Male':
@@ -320,6 +320,10 @@ if st.button("🚀 Predict Attrition", use_container_width=True):
             df['TrainingTimesLastYear_5'] = 0
             df['TrainingTimesLastYear_6'] = 1
         df.drop('TrainingTimesLastYear', axis=1, inplace=True)
+
+        # JobRole_bool: 1 if Laboratory Technician, else 0
+        df['JobRole_bool'] = 1 if job_role == 'Laboratory Technician' else 0
+        df.drop('JobRole', axis=1, inplace=True)
 
         # Make prediction
         prediction = int(model.predict(df)[0])
