@@ -1,0 +1,27 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Python cache and environment
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python packaging
+*.egg-info/
+build/
+dist/
+
+# Environment variables
+.env
+.env.*
+
+# IDE settings
+.vscode/
+.idea/
